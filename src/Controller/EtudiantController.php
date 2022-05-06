@@ -42,13 +42,13 @@ class EtudiantController extends AbstractController
     }
 
 
-    #[Route('/update/{id}/{nom}/{prenom}/{section}', name: 'etudiant.update')]
-    public function update(Etudiant $e=null,$nom,$prenom,$section): Response
+    #[Route('/update/{id}/{nom}/{prenom}', name: 'etudiant.update')]
+    public function update(Etudiant $e=null,$nom,$prenom,/*$section*/): Response
     {
         if ($e){
             $e->setNom($nom);
             $e->setPrenom($prenom);
-            $e->setSection($section);
+           // $e->setSection($section);
             $this->manager->persist($e);
             $this->manager->flush($e);
             $this->addFlash('success','Etudiant mis a jour!');
@@ -58,7 +58,7 @@ class EtudiantController extends AbstractController
         return $this->redirectToRoute('etudiant.list');
     }
 
-    #[Route('/update/{id}', name: 'etudiant.remove')]
+    #[Route('/remove/{id}', name: 'etudiant.remove')]
     public function remove(Etudiant $e=null): Response
     {
         if ($e){
