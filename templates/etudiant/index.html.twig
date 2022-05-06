@@ -24,7 +24,7 @@
                 {%else%}
                     <th>Etudiant non affecte encore a une section</th>
             {%endif%}
-            <th> <a href="{{path('etudiant.update',{'id':e.id,'nom':e.nom,'prenom':e.prenom})  }}">EDIT </a>
+            <th> <a href="{{path('etudiant.update',{'id':e.id,'nom':e.nom,'prenom':e.prenom}  )  }}">EDIT </a>
                 <a href="{{path('etudiant.remove',{'id':e.id})}}">DELETE </a></th>
         </tr>
         {%else%}
