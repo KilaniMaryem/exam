@@ -24,8 +24,8 @@
                 {%else%}
                     <th>Etudiant non affecte encore a une section</th>
             {%endif%}
-            <th> <a href="{{path('etudiant.update',{'id':e.id,'nom':e.nom,'prenom':e.prenom}  )  }}">EDIT </a>
-                <a href="{{path('etudiant.remove',{'id':e.id})}}">DELETE </a></th>
+            <th> <a href="{{path('etudiant.update',{id:e.id,nom:e.nom,prenom:e.prenom,section:e.section}  )  }}">EDIT </a>
+                <a href="{{path('etudiant.remove',{id:e.id})}}">DELETE </a></th>
         </tr>
         {%else%}
             <tr class="alert alert-warning "  >
@@ -37,8 +37,8 @@
                 {%else%}
                     <th>Etudiant non affecte encore a une section</th>
                 {%endif%}
-                <th> <a href="{{path('etudiant.update',{'id':e.id,'nom':e.nom,'prenom':e.prenom})}}">EDIT </a>
-                    <a href="{{path('etudiant.remove',{'id':e.id})}}">DELETE </a></th>
+                <th> <a href="{{path('etudiant.update',{id:e.id,nom:e.nom,prenom:e.prenom,section:e.section})}}">EDIT </a>
+                    <a href="{{path('etudiant.remove',{id:e.id})}}">DELETE </a></th>
             </tr>
         {%endif%}
 

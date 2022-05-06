@@ -35,20 +35,20 @@ class EtudiantController extends AbstractController
         if ($form->isSubmitted()){
             $this->manager->persist($e);
             $this->manager->flush($e);
-            $this->addflash('succes','Etudiant ajouté!');
+            $this->addflash('success','Etudiant ajouté!');
             return $this->redirectToRoute('etudiant.list');
         }
         return $this->render('etudiant/form.html.twig',['form'=>$form->createView()]);
     }
 
 
-    #[Route('/update/{id}/{nom}/{prenom}', name: 'etudiant.update')]
-    public function update(Etudiant $e=null,$nom,$prenom): Response
+    #[Route('/update/{id}/{nom}/{prenom}/{section}', name: 'etudiant.update')]
+    public function update(Etudiant $e=null,$nom,$prenom,$section): Response
     {
         if ($e){
             $e->setNom($nom);
             $e->setPrenom($prenom);
-           // $e->setSection($section);
+            $e->setSection($section);
             $this->manager->persist($e);
             $this->manager->flush($e);
             $this->addFlash('success','Etudiant mis a jour!');
