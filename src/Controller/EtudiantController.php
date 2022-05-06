@@ -57,4 +57,17 @@ class EtudiantController extends AbstractController
         }
         return $this->redirectToRoute('etudiant.list');
     }
+
+    #[Route('/update/{id}', name: 'etudiant.remove')]
+    public function remove(Etudiant $e=null): Response
+    {
+        if ($e){
+           $this->manager->remove($e);
+            $this->manager->flush($e);
+            $this->addFlash('success','Cet etudiant est supprime!');
+        }else{
+            $this->addFlash('error','Cet etudiant n existe pas!');
+        }
+        return $this->redirectToRoute('etudiant.list');
+    }
 }
