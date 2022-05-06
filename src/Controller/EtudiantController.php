@@ -43,7 +43,7 @@ class EtudiantController extends AbstractController
 
 
     #[Route('/update/{id}/{nom}/{prenom}', name: 'etudiant.update')]
-    public function update(Etudiant $e=null,$nom,$prenom,/*$section*/): Response
+    public function update(Etudiant $e=null,$nom,$prenom): Response
     {
         if ($e){
             $e->setNom($nom);
