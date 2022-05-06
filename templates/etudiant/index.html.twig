@@ -7,7 +7,7 @@
     <a href="{{ path('etudiant.add')}}">Ajouter un etudiant</a>
 <table class="table">
    <tr>
-       <th>ID</th>
+
        <th>NOM</th>
        <th>PRENOM</th>
        <th>SECTION</th>
@@ -16,7 +16,7 @@
     {% for e in etudiants%}
         {% if loop.index is odd %}
         <tr class="alert alert-success "  >
-            <th >{{e.id}}</th>
+
             <th>{{e.nom}}</th>
             <th>{{e.prenom}}</th>
             {%if e.section%}
@@ -29,7 +29,7 @@
         </tr>
         {%else%}
             <tr class="alert alert-info "  >
-                <th >{{e.id}}</th>
+
                 <th>{{e.nom}}</th>
                 <th>{{e.prenom}}</th>
                 {%if e.section%}
