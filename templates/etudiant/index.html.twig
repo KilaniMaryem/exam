@@ -17,31 +17,32 @@
         {% if loop.index is odd %}
         <tr class="alert alert-success "  >
 
-            <th>{{e.nom}}</th>
-            <th>{{e.prenom}}</th>
+            <td onclick="changeColor(this)">{{e.nom}}</td>
+            <td onclick="changeColor(this)">{{e.prenom}}</td>
             {%if e.section%}
-            <th>{{e.section}}</th>
+            <td onclick="changeColor(this)">{{e.section}}</td >
                 {%else%}
-                    <th>Etudiant non affecte encore a une section</th>
+                    <td onclick="changeColor(this)">Etudiant non affecte encore a une section</td>
             {%endif%}
-            <th> <a href="{{path('etudiant.update',{id:e.id,nom:e.nom,prenom:e.prenom,section:e.section}  )  }}">EDIT </a>
-                <a href="{{path('etudiant.remove',{id:e.id})}}">DELETE </a></th>
+            <td onclick="changeColor(this)"> <a href="{{path   ('etudiant.add',{id:e.id}   )}}">EDIT</a>
+                <a href="{{path    ('etudiant.remove',{id:e.id})  }}">DELETE </a></td>
         </tr>
         {%else%}
             <tr class="alert alert-warning "  >
 
-                <th>{{e.nom}}</th>
-                <th>{{e.prenom}}</th>
+                <td onclick="changeColor(this)">{{e.nom}}</td>
+                <td onclick="changeColor(this)">{{e.prenom}}</td>
                 {%if e.section%}
-                    <th>{{e.section}}</th>
+                    <td onclick="changeColor(this)">{{e.section}}</td>
                 {%else%}
-                    <th>Etudiant non affecte encore a une section</th>
+                    <td onclick="changeColor(this)">Etudiant non affecte encore a une section</td >
                 {%endif%}
-                <th> <a href="{{path('etudiant.update',{id:e.id,nom:e.nom,prenom:e.prenom,section:e.section})}}">EDIT </a>
-                    <a href="{{path('etudiant.remove',{id:e.id})}}">DELETE </a></th>
+                <td onclick="changeColor(this)"> <a href="{{path   ('etudiant.add',{id:e.id}   )}}">EDIT </a>
+                    <a href="{{path('etudiant.remove',{id:e.id})}}">DELETE </a></td >
             </tr>
         {%endif%}
 
     {%endfor%}
 </table>
+    <script src="{{ asset('assets/script.js') }}"></script>
 {% endblock %}

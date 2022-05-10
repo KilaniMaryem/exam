@@ -27,14 +27,17 @@ class EtudiantController extends AbstractController
     }
 
 
-    #[Route('/add', name: 'etudiant.add')]
-    public function add(Request $req): Response
-    {  $e=new Etudiant();
+    #[Route('/add/{id?0}', name: 'etudiant.add')]
+    public function add(Request $req, Etudiant $e=null): Response
+    {  if (!$e){
+        $e=new Etudiant();
+    }
         $form=$this->createForm(EtudiantType::class,$e);
         $form->handleRequest($req);
         if ($form->isSubmitted()){
             $this->manager->persist($e);
             $this->manager->flush($e);
+
             $this->addflash('success','Etudiant ajouté!');
             return $this->redirectToRoute('etudiant.list');
         }
@@ -42,21 +45,8 @@ class EtudiantController extends AbstractController
     }
 
 
-    #[Route('/update/{id}/{nom}/{prenom}/{section}', name: 'etudiant.update')]
-    public function update(Etudiant $e=null,$nom,$prenom,$section): Response
-    {
-        if ($e){
-            $e->setNom($nom);
-            $e->setPrenom($prenom);
-            $e->setSection($section);
-            $this->manager->persist($e);
-            $this->manager->flush($e);
-            $this->addFlash('success','Etudiant mis a jour!');
-        }else{
-            $this->addFlash('error','Cet etudiant n existe pas!');
-        }
-        return $this->redirectToRoute('etudiant.list');
-    }
+
+
 
     #[Route('/remove/{id}', name: 'etudiant.remove')]
     public function remove(Etudiant $e=null): Response
